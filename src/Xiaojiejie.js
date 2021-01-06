@@ -19,7 +19,7 @@ class Xiaojiejie extends Component{
                 <ul>
                    {
                        this.state.list.map((item,index)=>{
-                            return <li key={index+item}>{item}</li>
+                            return <li key={index+item} onClick={this.deleteItem.bind(this,index)}>{item}</li>
                        })
                    }
                 </ul>
@@ -38,6 +38,16 @@ class Xiaojiejie extends Component{
         this.setState({
             list:[...this.state.list,this.state.inputValue],
             inputValue:''
+        })
+    }
+
+    //删除列表项
+    deleteItem(index){
+        console.log(index)
+        let list = this.state.list
+        list.splice(index,1);
+        this.setState({
+            list:list
         })
     }
 }
